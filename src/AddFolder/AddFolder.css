@@ -1,0 +1,36 @@
+.add-folder {
+    background-color: #030f1f;
+    color: #b5b3b3;
+    display: block;
+    font-family: var(--custom-font);
+    font-size: 14px;
+    margin: 0 0 8px auto;
+    max-width: 180px;
+    padding: 8px 16px;
+    text-decoration: none;
+    line-height: 1em;
+  }
+  
+  .add-folder p, .add-folder label {
+    margin: 7px 0px;
+  }
+  
+  .add-folder input {
+    width: 100%;
+    padding: 4px;
+    margin: 7px;
+    overflow: hidden;
+  }
+  
+  .add-folder .form-title {
+    font-size: 20px;
+    font-style: normal;
+  }
+  
+  .add-folder .hint {
+    color: #FFB72F;
+  }
+  
+  .add-folder .form-status {
+    color: red;
+  }

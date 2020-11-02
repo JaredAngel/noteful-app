@@ -1,8 +1,9 @@
-import React from 'react';
-import Note from '../Note/Note';
-import ApiContext from '../ApiContext';
-import { findNote } from '../notes-helpers';
-import './NotePageMain.css';
+import React from 'react'
+import Note from '../Note/Note'
+import ApiContext from '../ApiContext'
+import { findNote } from '../notes-helpers'
+import PropTypes from 'prop-types'
+import './NotePageMain.css'
 
 export default class NotePageMain extends React.Component {
   static defaultProps = {
@@ -23,9 +24,7 @@ export default class NotePageMain extends React.Component {
     return (
       <section className='NotePageMain'>
         <Note
-          id={note.id}
-          name={note.name}
-          modified={note.modified}
+          note={note}
           onDeleteNote={this.handleDeleteNote}
         />
         <div className='NotePageMain__content'>
@@ -36,4 +35,10 @@ export default class NotePageMain extends React.Component {
       </section>
     )
   }
+}
+
+NotePageMain.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.object.isRequired
+  })
 }

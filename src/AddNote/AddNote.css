@@ -1,0 +1,49 @@
+.add-note {
+    background-color: #030f1f;
+    color: #b5b3b3;
+    display: block;
+    font-family: var(--custom-font);
+    font-size: 14px;
+    margin: none;
+    max-width: 400px;
+    padding: 8px 16px;
+    text-decoration: none;
+    line-height: 1em;
+}
+
+.add-note p, .add-note label {
+    margin: 10px;
+}
+
+.add-note input {
+    width: 100%;
+    margin: 10px;
+}
+
+.add-note .form-title {
+    font-size: 20px;
+    font-style: normal;
+}
+
+.add-note .hint {
+    color: #FFB72F;
+}
+
+.add-note .form-status {
+    color: red;
+}
+
+.submit-button button {
+    margin: 10px;
+    height: 50px;
+    width: 100%;
+}
+
+.content-textarea {
+    width: 100%;
+    margin: 10px;
+}
+
+.name-div {
+    width: 100%;
+}

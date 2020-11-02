@@ -1,19 +1,20 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Note from '../Note/Note';
-import CircleButton from '../CircleButton/CircleButton';
-import ApiContext from '../ApiContext';
-import { getNotesForFolder } from '../notes-helpers';
-import './NoteListMain.css';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Note from '../Note/Note'
+import CircleButton from '../CircleButton/CircleButton'
+import ApiContext from '../ApiContext'
+import { getNotesForFolder } from '../notes-helpers'
+import PropTypes from 'prop-types'
+import { withRouter } from 'react-router-dom'
+import './NoteListMain.css'
 
-export default class NoteListMain extends React.Component {
+class NoteListMain extends React.Component {
   static defaultProps = {
     match: {
       params: {}
     }
   }
-  static contextType = ApiContext
 
   render() {
     const { folderId } = this.props.match.params
@@ -25,9 +26,7 @@ export default class NoteListMain extends React.Component {
           {notesForFolder.map(note =>
             <li key={note.id}>
               <Note
-                id={note.id}
-                name={note.name}
-                modified={note.modified}
+                note={note}
               />
             </li>
           )}
@@ -48,3 +47,12 @@ export default class NoteListMain extends React.Component {
     )
   }
 }
+
+NoteListMain.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.object
+  })
+}
+
+export default withRouter(NoteListMain);
+NoteListMain.contextType = ApiContext;

@@ -1,20 +1,21 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { format } from 'date-fns';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import ApiContext from '../ApiContext';
-import config from '../config';
-import './Note.css';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { format } from 'date-fns'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import ApiContext from '../ApiContext'
+import config from '../config'
+import PropTypes from 'prop-types'
+import './Note.css'
 
 export default class Note extends React.Component {
-  static defaultProps ={
-    onDeleteNote: () => {},
+  static defaultProps = {
+    onDeleteNote: () => { },
   }
   static contextType = ApiContext;
 
   handleClickDelete = e => {
     e.preventDefault()
-    const noteId = this.props.id
+    const noteId = this.props.note.id
 
     fetch(`${config.API_ENDPOINT}/notes/${noteId}`, {
       method: 'DELETE',
@@ -38,7 +39,7 @@ export default class Note extends React.Component {
   }
 
   render() {
-    const { name, id, modified } = this.props
+    const { name, id, modified } = this.props.note
     return (
       <div className='Note'>
         <h2 className='Note__title'>
@@ -67,4 +68,15 @@ export default class Note extends React.Component {
       </div>
     )
   }
+}
+
+Note.propTypes = {
+  note: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    modified: PropTypes.string,
+    folderId: PropTypes.string.isRequired,
+    content: PropTypes.string.isRequired
+  }),
+  onDeleteNote: PropTypes.func
 }
