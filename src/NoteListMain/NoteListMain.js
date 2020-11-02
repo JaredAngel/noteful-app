@@ -1,13 +1,13 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Note from '../Note/Note'
-import CircleButton from '../CircleButton/CircleButton'
-import ApiContext from '../ApiContext'
-import { getNotesForFolder } from '../notes-helpers'
-import PropTypes from 'prop-types'
-import { withRouter } from 'react-router-dom'
-import './NoteListMain.css'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Note from '../Note/Note';
+import CircleButton from '../CircleButton/CircleButton';
+import ApiContext from '../ApiContext';
+import { getNotesForFolder } from '../notes-helpers';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
+import './NoteListMain.css';
 
 class NoteListMain extends React.Component {
   static defaultProps = {

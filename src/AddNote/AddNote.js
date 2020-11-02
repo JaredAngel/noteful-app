@@ -34,14 +34,14 @@ class AddNote extends React.Component {
         this.setState({ content: { value: content, touched: true } });
     }
 
-    validateName = () => {
+    nameValidation = () => {
         const name = this.state.name.value.trim();
         if (!name)
             return 'Name cannot be empty.'
         return;
     }
 
-    validateFolder = (contextfolders) => {
+    folderValidation = (contextfolders) => {
         const folder = this.state.folder.value.trim();
         if (!folder)
             return 'Folder cannot be empty.'
@@ -50,14 +50,14 @@ class AddNote extends React.Component {
         return;
     }
 
-    validateContent = () => {
+    contentValidation = () => {
         const content = this.state.content.value.trim();
         if (!content)
             return 'Content cannot be empty.'
         return;
     }
 
-    putNote = () => {
+    placeNote = () => {
         const options = {
             method: 'POST',
             headers: {
@@ -79,7 +79,7 @@ class AddNote extends React.Component {
     handleSubmit = (event, callback) => {
         event.preventDefault();
         this.setState({ fetchError: '' })
-        this.putNote()
+        this.placeNote()
             .then((resJson) => {
                 callback(resJson);
                 this.props.history.push('/');
@@ -87,7 +87,7 @@ class AddNote extends React.Component {
             .catch(e => this.setState({ fetchError: e.message }));
     }
 
-    createOption = (folders) => {
+    optionCreate = (folders) => {
         const folderOption = folders.map(folder => {
             return (
                 <option key={folder.id} value={folder.id}>{folder.name}</option>
@@ -102,11 +102,16 @@ class AddNote extends React.Component {
                 {(context) => (
                     <li className="add-note">
                         <form id='add-note-form'>
+
                             <p className='form-status'>{this.state.fetchError}</p>
                             <p className='form-title'>Add Note</p>
                             <label htmlFor='note-name'>Enter a note name:</label>
                             <p className='hint'>* required</p>
                             <div className="name-div">
+
+
+
+
                             <input
                                 type='text'
                                 id='note-name'
@@ -114,7 +119,7 @@ class AddNote extends React.Component {
                                 onChange={(e) => this.updateName(e.target.value)}
                             />
                             {this.state.name.touched
-                                && <ValidationError message={this.validateName()}/>}
+                                && <ValidationError message={this.nameValidation()}/>}
                             </div>
                             <label htmlFor='note-content'>Content:</label>
                             <div className="content-textarea">
@@ -125,8 +130,11 @@ class AddNote extends React.Component {
                                 onChange={(e) => this.updateContent(e.target.value)}
                             />
                             {this.state.content.touched
-                                && <ValidationError message={this.validateContent()}/>}
+                                && <ValidationError message={this.contentValidation()}/>}
                             </div>
+
+
+
                             <label htmlFor='note-folder'>Folder:</label>
                             <select
                                 id="folder-select"
@@ -134,10 +142,14 @@ class AddNote extends React.Component {
                                 defaultValue=''
                                 onChange={(e) => this.updateFolder(e.target.value)}>
                                 <option value='' disabled >Select a Folder:</option>
-                                {this.createOption(context.folders)}
+                                {this.optionCreate(context.folders)}
                             </select>
+
+
+
+
                             {this.state.folder.touched
-                                && <ValidationError message={this.validateFolder(context.folders)}/>}
+                                && <ValidationError message={this.folderValidation(context.folders)}/>}
                             <div className="submit-button">
                                 <button
                                     type='submit'
@@ -146,9 +158,9 @@ class AddNote extends React.Component {
                                         this.handleSubmit(e, context.addNote)
                                     }}
                                     disabled={
-                                        this.validateName() ||
-                                        this.validateContent() ||
-                                        this.validateFolder(context.folders)}
+                                        this.nameValidation() ||
+                                        this.contentValidation() ||
+                                        this.folderValidation(context.folders)}
                                 > Submit
                             </button>
                             </div>

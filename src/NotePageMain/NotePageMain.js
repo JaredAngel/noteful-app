@@ -1,17 +1,17 @@
-import React from 'react'
-import Note from '../Note/Note'
-import ApiContext from '../ApiContext'
-import { findNote } from '../notes-helpers'
-import PropTypes from 'prop-types'
-import './NotePageMain.css'
+import React from 'react';
+import Note from '../Note/Note';
+import ApiContext from '../ApiContext';
+import { findNote } from '../notes-helpers';
+import PropTypes from 'prop-types';
+import './NotePageMain.css';
 
-export default class NotePageMain extends React.Component {
+class NotePageMain extends React.Component {
   static defaultProps = {
     match: {
       params: {}
     }
   }
-  static contextType = ApiContext
+  static contextType = ApiContext;
 
   handleDeleteNote = noteId => {
     this.props.history.push(`/`)
@@ -42,3 +42,5 @@ NotePageMain.propTypes = {
     params: PropTypes.object.isRequired
   })
 }
+
+export default NotePageMain;

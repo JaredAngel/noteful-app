@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ValidationError component renders ValidationError by default 1`] = `""`;

@@ -10,11 +10,13 @@
     text-decoration: none;
     line-height: 1em;
   }
-  
-  .add-folder p, .add-folder label {
-    margin: 7px 0px;
+  .add-folder .form-status {
+    color: red;
   }
-  
+
+  .add-folder .hint {
+    color: #FFB72F;
+  }
   .add-folder input {
     width: 100%;
     padding: 4px;
@@ -26,11 +28,9 @@
     font-size: 20px;
     font-style: normal;
   }
-  
-  .add-folder .hint {
-    color: #FFB72F;
+  .add-folder p, .add-folder label {
+    margin: 7px 0px;
   }
   
-  .add-folder .form-status {
-    color: red;
-  }
+
+  

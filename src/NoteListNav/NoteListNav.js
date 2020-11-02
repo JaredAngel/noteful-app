@@ -1,11 +1,11 @@
-import React from 'react'
-import { NavLink, Link } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import CircleButton from '../CircleButton/CircleButton'
-import ApiContext from '../ApiContext'
-import AddFolder from '../AddFolder/AddFolder'
-import { countNotesForFolder } from '../notes-helpers'
-import './NoteListNav.css'
+import React from 'react';
+import { NavLink, Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import CircleButton from '../CircleButton/CircleButton';
+import ApiContext from '../ApiContext';
+import AddFolder from '../AddFolder/AddFolder';
+import { countNotesForFolder } from '../notes-helpers';
+import './NoteListNav.css';
 
 class NoteListNav extends React.Component {
   static contextType = ApiContext;

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './ValidationError.css';
 
-export default function ValidationError(props) {
+function ValidationError(props) {
   if (props.message)
     return <p className='validation-error'>{props.message}</p>;
   return null;
@@ -15,3 +15,5 @@ ValidationError.defaultProps = {
 ValidationError.propTypes = {
   message: PropTypes.string
 }
+
+export default ValidationError;

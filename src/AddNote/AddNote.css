@@ -11,26 +11,16 @@
     line-height: 1em;
 }
 
-.add-note p, .add-note label {
-    margin: 10px;
-}
 
-.add-note input {
-    width: 100%;
-    margin: 10px;
-}
 
 .add-note .form-title {
     font-size: 20px;
     font-style: normal;
 }
 
-.add-note .hint {
-    color: #FFB72F;
-}
-
-.add-note .form-status {
-    color: red;
+.add-note input {
+    width: 100%;
+    margin: 10px;
 }
 
 .submit-button button {
@@ -46,4 +36,15 @@
 
 .name-div {
     width: 100%;
+}
+
+.add-note .hint {
+    color: #FFB72F;
+}
+
+.add-note .form-status {
+    color: red;
+}
+.add-note p, .add-note label {
+    margin: 10px;
 }

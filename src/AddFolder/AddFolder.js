@@ -19,18 +19,18 @@ class AddFolder extends Component {
     fetchError: ''
   }
 
-  updateFolder = (folder) => {
+  folderUpdate = (folder) => {
     this.setState({ folder: { value: folder, touched: true } });
   }
 
-  validateFolder = () => {
+  folderValidation = () => {
     const folder = this.state.folder.value.trim();
     if (!folder)
       return 'Name cannot be empty.'
     return;
   }
 
-  putFolder = (folderName) => {
+  placeFolder = (folderName) => {
     const options = {
       method: 'POST',
       headers: {
@@ -48,7 +48,7 @@ class AddFolder extends Component {
   handleSubmit = (event, callback) => {
     event.preventDefault();
     this.setState({ fetchError: '' })
-    this.putFolder(this.state.folder.value)
+    this.placeFolder(this.state.folder.value)
       .then((resJson) => {
         this.props.deleteFolder(this.props.id);
         callback(resJson);
@@ -70,16 +70,16 @@ class AddFolder extends Component {
                 type='text'
                 id='folder'
                 name='folder'
-                onChange={(e) => this.updateFolder(e.target.value)}
+                onChange={(e) => this.folderUpdate(e.target.value)}
               />
-              {this.state.folder.touched && <ValidationError message={this.validateFolder()} />}
+              {this.state.folder.touched && <ValidationError message={this.folderValidation()} />}
               <button
                 type='submit'
                 form='add-folder-form'
                 onClick={(e) => {
                   this.handleSubmit(e, context.addFolder)
                 }}
-                disabled={this.validateFolder()}
+                disabled={this.folderValidation()}
               > Submit
             </button>
               <button
