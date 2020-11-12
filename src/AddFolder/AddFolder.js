@@ -40,9 +40,13 @@ class AddFolder extends Component {
     }
     return fetch(`${config.API_ENDPOINT}/folders`, options)
       .then(res => {
-        if (!res.ok) throw new Error(res.statusText);
+        if (!res.ok) {
+            throw new Error(res.statusText);
+        }
         return res.json();
       })
+      // if there is an issue with the API call an error message is set in the state
+      .catch(err => this.setState({ error: err.message }));
   }
 
   handleSubmit = (event, callback) => {

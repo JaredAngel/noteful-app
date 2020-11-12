@@ -3,6 +3,7 @@ import config from '../config';
 import ApiContext from '../ApiContext';
 import ValidationError from '../ValidationError/ValidationError';
 import './AddNote.css';
+//import { distanceInWordsToNow } from 'date-fns';
 
 
 class AddNote extends React.Component {
@@ -66,14 +67,19 @@ class AddNote extends React.Component {
             body: JSON.stringify({
                 "name": this.state.name.value,
                 "content": this.state.content.value,
-                "folderId": this.state.folder.value
+                "folderId": this.state.folder.value,
+                "modified": new Date()
             })
         }
         return fetch(`${config.API_ENDPOINT}/notes`, options)
             .then(res => {
-                if (!res.ok) throw new Error(res.statusText);
+                if (!res.ok) {
+                    throw new Error(res.statusText);
+                }
                 return res.json();
             })
+            // if there is an issue with the API call an error message is set in the state
+            .catch(err => this.setState({ error: err.message }));
     }
 
     handleSubmit = (event, callback) => {
